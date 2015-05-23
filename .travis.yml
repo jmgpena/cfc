@@ -5,10 +5,10 @@ php:
 
 before_script:
   - composer self-update
-  - composer install --dev --no-interaction --prefer-source
+  - composer install --no-interaction --prefer-source
 
 script:
-  bin/phpunit
+  vendor/bin/phpunit tests
 
 addons:
   ssh_known_hosts: vps.jmgpena.net
@@ -16,5 +16,6 @@ addons:
 before_install:
 - openssl aes-256-cbc -K $encrypted_1f469ef81ca4_key -iv $encrypted_1f469ef81ca4_iv -in deploy_key.enc -out deploy_key -d
 - chmod 600 deploy_key
+
 after_success:
-- rsync -rv --delete -e "ssh -i deploy_key" export/ jmgpena@vps.jmgpena.net:~/cfc
+- rsync -rv --delete -e "ssh -i deploy_key" ./ jmgpena@vps.jmgpena.net:~/cfc
