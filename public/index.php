@@ -42,7 +42,7 @@ $app->post('/api/message', function(Request $request) use ($app) {
             );
             return $app->json($response, 201);
         } else {
-            return $app->json(array('status'=>'FAILED'), 201);
+            return $app->json(array('status'=>'FAILED'), 400);
         }
     });
 
