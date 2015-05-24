@@ -18,5 +18,5 @@ before_install:
 - chmod 600 deploy_key
 
 after_success:
-- rsync -rv --delete -e "ssh -i deploy_key" vendor jmgpena@vps.jmgpena.net:~/cfc/vendor
-- rsync -rv --delete -e "ssh -i deploy_key" public jmgpena@vps.jmgpena.net:~/cfc/public
+- rsync -rv --delete -e "ssh -i deploy_key" vendor jmgpena@vps.jmgpena.net:~/cfc/
+- rsync -rv --delete -e "ssh -i deploy_key" public jmgpena@vps.jmgpena.net:~/cfc/
