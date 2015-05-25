@@ -46,8 +46,17 @@ $app->post('/api/message', function(Request $request) use ($app) {
         }
     });
 
-$app->get('/hello/{name}', function ($name) use ($app) {
-        return 'Hello '.$app->escape($name);
+$app->get('/', function () use ($app) {
+        global $pheanstalk;
+
+        $job = $pheanstalk
+             ->watch('test')
+             ->ignore('default')
+             ->reserve();
+        $data = $job->getData();
+        $pheanstalk->delete($job);
+
+        return $data;
     });
 
 $app->run();
