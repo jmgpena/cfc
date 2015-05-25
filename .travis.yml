@@ -20,3 +20,5 @@ before_install:
 after_success:
 - rsync -rv --delete -e "ssh -i deploy_key" vendor jmgpena@vps.jmgpena.net:~/cfc/
 - rsync -rv --delete -e "ssh -i deploy_key" public jmgpena@vps.jmgpena.net:~/cfc/
+- rsync -rv --delete -e "ssh -i deploy_key" bin jmgpena@vps.jmgpena.net:~/cfc/
+- rsync -rv --delete -e "ssh -i deploy_key" src jmgpena@vps.jmgpena.net:~/cfc/
