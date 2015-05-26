@@ -1,4 +1,4 @@
-var ws = new WebSocket('ws://cfc.jmgpena.net/ws');
+var ws;
 
 function renderMsg(message) {
     var div = document.createElement("div");
@@ -9,23 +9,35 @@ function renderMsg(message) {
     document.body.appendChild(div);
 }
 
-ws.onopen = function(evt) {
+function onopen(evt) {
     console.log('Websocket connection opened');
-};
+}
 
-ws.onclose = function(evt) {
+function onclose(evt) {
     console.log('Websocket connection closed');
     setTimeout(function() {
-        ws = new WebSocket('ws://cfc.jmgpena.net/ws');
+        createWsConn();
     }, 1000);
-};
+}
 
-ws.onmessage = function(evt) {
+function onmessage(evt) {
     console.log('Message: ',evt.data);
     renderMsg(evt.data);
-};
+}
 
-ws.onerror = function(evt) {
-    console.log('Error: ', evt.data);
-};
+function onerror(evt) {
+        console.log('Error: ', evt.data);
+}
 
+function createWsConn() {
+    ws = new WebSocket('ws://cfc.jmgpena.net/ws');
+
+    ws.onopen = onopen;
+    ws.onclose = onclose;
+
+    ws.onmessage = onmessage;
+
+    ws.onerror = onerror;
+}
+
+createWsConn();
