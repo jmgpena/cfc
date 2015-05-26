@@ -16,7 +16,7 @@ function processMessage($message) {
     global $pheanstalk;
 
     $pheanstalk
-        ->useTube('test')
+        ->useTube('cfm')
         ->put(json_encode($message)."\n");
 
     return true;
@@ -47,16 +47,7 @@ $app->post('/api/message', function(Request $request) use ($app) {
     });
 
 $app->get('/', function () use ($app) {
-        global $pheanstalk;
-
-        $job = $pheanstalk
-             ->watch('test')
-             ->ignore('default')
-             ->reserve();
-        $data = $job->getData();
-        $pheanstalk->delete($job);
-
-        return $data;
+        return "Hello";
     });
 
 $app->run();
