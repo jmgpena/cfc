@@ -38,7 +38,7 @@ while (true) {
 
     // if the message is succefull published to clients
     // it will be deleted, else we wait before trying again
-    if ( publishMessage($data) ) {
+    if ( publishMessage($wsClient, $data) ) {
         $pheanstalk->delete($job);
         echo "deleted job: {$job->getId()}";
     } else {
