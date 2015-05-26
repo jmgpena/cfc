@@ -6,6 +6,7 @@ php:
 before_script:
   - composer self-update
   - composer install --no-interaction --prefer-source
+  - composer dump-autoload --optimize
 
 script:
   vendor/bin/phpunit tests

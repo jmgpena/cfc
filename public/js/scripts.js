@@ -1,4 +1,4 @@
-var ws = new WebSocket('ws://ftc.dev/ws');
+var ws = new WebSocket('ws://cfc.jmgpena.net/ws');
 
 function renderMsg(message) {
     var div = document.createElement("div");
@@ -16,7 +16,7 @@ ws.onopen = function(evt) {
 ws.onclose = function(evt) {
     console.log('Websocket connection closed');
     setTimeout(function() {
-        ws = new WebSocket('ws://ftc.dev/ws');
+        ws = new WebSocket('ws://cfc.jmgpena.net/ws');
     }, 1000);
 };
 
