@@ -15,6 +15,9 @@ ws.onopen = function(evt) {
 
 ws.onclose = function(evt) {
     console.log('Websocket connection closed');
+    setTimeout(function() {
+        ws = new WebSocket('ws://ftc.dev/ws');
+    }, 1000);
 };
 
 ws.onmessage = function(evt) {
