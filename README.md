@@ -13,6 +13,8 @@ Message processing framework using:
 - Pheanstalk (client library for beanstalkd)
 - Websocket (PHP library for connecting to websocket server)
 
+This project was fun to work on and I ended up learning new stuff on the way. I could also have used node.js for the various components and probably would have been easier because of the asynchronous architecture already in place.
+
 # Architecture
 
 I use nginx as the webserver and proxy for the websocket server. Also
