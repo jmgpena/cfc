@@ -60,12 +60,11 @@ I used a postman and loadtest to test the api. To run a basic test open the
 frontend on a web browser and run the following command or post manually
 messages to the api endpoint.
 
-  loadtest http://cfc.jmgpena.net/api/message -P '{"userId":
-  "134259","currencyFrom": " EUR","currencyTo": "GBP","amountSell":
-  1000,"amountBuy": 747.10,"rate": 0.7471,"timePla ced" : "24-JAN-15
-  10:27:44","originatingCountry" : "FR"}' -c 10 --rps 50 -n 100
+```
+loadtest http://cfc.jmgpena.net/api/message -P '{"userId": "134259","currencyFrom": " EUR","currencyTo": "GBP","amountSell": 1000,"amountBuy": 747.10,"rate": 0.7471,"timePla ced" : "24-JAN-15 10:27:44","originatingCountry" : "FR"}' -c 10 --rps 50 -n 100
+```
 
-This will post
+This will post 100 messages to the server that should display on the browser almost instantly.
 
 # Benefits
 
